@@ -1,0 +1,11 @@
+#title{
+    background-color: olivedrab;
+    color: black;
+    text-align: center;
+    width: 100%;
+}
+
+#navbar{
+    background-color: darkolivegreen;
+    columns: 50% 2;
+}
