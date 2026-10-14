@@ -1,11 +1,19 @@
-#title{
-    background-color: olivedrab;
-    color: black;
+.title{
+    background-color: navy;
+    color: white;
     text-align: center;
     width: 100%;
 }
 
-#navbar{
-    background-color: darkolivegreen;
+.navbar{
+    background-color: cornflowerblue;
     columns: 50% 2;
+    text-align: center;
+}
+
+.form{
+    background-color: lightblue;
+    text-align: center;
+    width: 100%;
+    margin: 50px;
 }
