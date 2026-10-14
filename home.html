@@ -19,6 +19,7 @@
         <button type="button" onclick="showForm()">Click to add a new practice session</button> 
         <div id="form">
             <form>
+                <br>
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date">
                 <br>
@@ -32,6 +33,20 @@
                     <option value="piano">Piano</option>
                     <option value="trumpet">Trumpet</option>
                 </select>
+                <br>
+                <br>
+                <label for="scales">Scales</label>
+                <input type="checkbox" id="scales" name="scales">
+                <br>
+                <label for="exercises">Exercises/Studies</label>
+                <input type="checkbox" id="exercises" name="exercises">
+                <br>
+                <label for="pieces">Pieces</label>
+                <input type="checkbox" id="pieces" name="pieces">
+                <br>
+                <br>
+                <label for="description">Description</label>
+                <input type="longtext" id="description" name="description">
                 <br>
                 <br>
                 <input type="submit" value="Submit" onclick="hideForm()">
