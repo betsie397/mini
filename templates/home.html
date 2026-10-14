@@ -2,8 +2,9 @@
 <html>
     <head>
         <title>Website</title>
-        <link href="styles.css" type="text/css" rel="stylesheet">
-        <script src="./form.js"></script>
+        <link href="../static/styles.css" type="text/css" rel="stylesheet">
+        <script src="../static/form.js"></script>
+        <script src="../static/table.js"></script>
     </head>
 
     <body>
@@ -18,7 +19,7 @@
 
         <button type="button" onclick="showForm()">Click to add a new practice session</button> 
         <div id="form">
-            <form>
+            <form action="/home" method="POST">
                 <br>
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date">
@@ -54,7 +55,7 @@
             </form>
         </div>
 
-        <div class="practice_log">
+        <div class="practice_log" id="table">
             <table>
                 <th>Date</th>
                 <th>Duration</th>
@@ -63,6 +64,7 @@
                 <th>Exercises/Studies</th>
                 <th>Pieces</th>
                 <th>Description</th>
+                showTable({data})
             </table>
         </div>
     </body>
