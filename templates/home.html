@@ -13,8 +13,8 @@
         </div>
 
         <div class="navbar">
-            <a href="home.html">Home</a>
-            <a href="second.html">Second Page</a>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('second') }}">Second Page</a>
         </div>
 
         <button type="button" onclick="showForm()">Click to add a new practice session</button> 
@@ -55,17 +55,9 @@
             </form>
         </div>
 
-        <div class="practice_log" id="table">
-            <table>
-                <th>Date</th>
-                <th>Duration</th>
-                <th>Instrument</th>
-                <th>Scales</th>
-                <th>Exercises/Studies</th>
-                <th>Pieces</th>
-                <th>Description</th>
-                <script>showTable({data});</script>
-            </table>
+        <div class="practice_log">
+            <table id="table"></table>
+            <script>showTable( {{ data | tojson }} );</script>
         </div>
     </body>
 </html>

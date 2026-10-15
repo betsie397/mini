@@ -2,15 +2,15 @@
 <html>
     <head>
         <title>Website</title>
-        <link href="styles.css" type="text/css" rel="stylesheet">
+        <link href="../static/styles.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         <div class ="title">
             <h1>page 2 !!!!!!!!!!</h1>
         </div>
         <div class="navbar">
-            <a href="home.html">Home</a>
-            <a href="second.html">Second Page</a>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('second') }}">Second Page</a>
         </div>
     </body>
 </html>

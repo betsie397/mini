@@ -1,17 +1,25 @@
 function showTable(data) {
     const table = document.getElementById("table");
-    const entries = data.split(/\r?\n/);
+    const headers = ["Date", "Duration", "Instrument", "Scales", "Exercises/Studies", "Pieces", "Description"];
 
-    for (const entry of entries){
-        const practice = entries[entry].split(", ", 7);
-        document.getElementById("table").innerHTML += "<tr>";
-        for (const item of practice){
-            if (!practice[item]){
-                document.getElementById("table").innerHTML += "<td></td>";
-            } else {
-                document.getElementById("table").innerHTML += "<td>" + practice[item] + "</td>";
-            }
-        }
-        document.getElementById("table").innerHTML += "</tr>";
-    }
+    const headerRow = document.createElement("tr");
+    headers.forEach(header => {
+        const th = document.createElement("th")
+        th.textContent = header;
+        headerRow.appendChild(th);
+    });
+    table.appendChild(headerRow);
+
+    data.forEach(row => {
+        const tableRow = document.createElement("tr");
+
+        headers.forEach(header => {
+            const td = document.createElement("td");
+            td.textContent = row[header];
+            tableRow.appendChild(td)
+        });
+
+        table.appendChild(tableRow)
+    });
+    
 }
