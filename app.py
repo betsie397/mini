@@ -7,7 +7,7 @@ app = Flask(__name__)
 def home():
     if request.method == 'GET':
         with open('./practice_log.csv', 'r') as file:
-            reader = csv.DictReader(file)
+            reader = csv.DictReader(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, skipinitialspace = True)
             data = list(reader)
         return render_template('./home.html', data = data)
     if request.method == "POST":
@@ -18,7 +18,8 @@ def home():
         exercises = request.form.get("exercises")
         pieces = request.form.get("pieces")
         description = request.form.get("description")
-        insert = str(date) + ", " + str(duration) + "," + str(instrument) + "," + str(scales) + "," + str(exercises) + "," + str(pieces) + "," + str(description)
+        print(instrument)
+        insert = str(date) + ", " + str(duration) + ", " + str(instrument) + ", " + str(scales) + ", " + str(exercises) + ", " + str(pieces) + ", \"" + str(description) + "\""
         file = open("./practice_log.csv", "a")
         file.write("\n" + insert )
         file.close()

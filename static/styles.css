@@ -35,6 +35,6 @@ body{
 .practice_log{
     width: 100%;
     margin: auto;
-    column-gap: 25px;
+    column-gap: 50px;
     text-align: center;
 }
