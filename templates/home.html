@@ -22,15 +22,15 @@
             <form action="{{ url_for('home')}}" method="POST">
                 <br>
                 <label for="date">Date:</label>
-                <input type="date" id="date" name="date">
+                <input type="date" id="date" name="date" max = "{{today}}" required>
                 <br>
                 <br>
                 <label for="duration">Duration:</label>
-                <input type="time" id="duration" name="duration" min="0" max="24" step="60">
+                <input type="time" id="duration" name="duration" min="0" max="24" step="60" required>
                 <br>
                 <br>
                 <label for="instrument">Instrument:</label>
-                <select id="instrument" name="instrument">
+                <select id="instrument" name="instrument" required>
                     <option value="" disabled selected>Select an instrument</option>
                     <option value="piano">Piano</option>
                     <option value="trumpet">Trumpet</option>
@@ -51,7 +51,7 @@
                 <input type="longtext" id="description" name="description">
                 <br>
                 <br>
-                <input type="submit" value="Submit" onclick="hideForm()">
+                <input type="submit" value="Submit">
                 <input type="Reset" value="Reset">
             </form>
         </div>

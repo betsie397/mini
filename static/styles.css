@@ -32,9 +32,8 @@ body{
     left: 25%;
 }
 
-.practice_log{
-    width: 100%;
-    margin: auto;
-    column-gap: 50px;
-    text-align: center;
+th, td{
+    text-align: left;
+    padding: 20px;
+    border: 1px solid rgb(66, 65, 65);
 }

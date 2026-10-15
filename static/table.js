@@ -1,6 +1,6 @@
 function showTable(data) {
     const table = document.getElementById("table");
-    const headers = ["Date", "Duration", "Instrument", "Scales", "Exercises/Studies", "Pieces", "Description"];
+    const headers = ["Date", "Duration", "Instrument", "Scales", "Exercises/Studies", "Pieces", "Description", "Date Entered"];
 
     const headerRow = document.createElement("tr");
     headers.forEach(header => {
