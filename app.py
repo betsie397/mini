@@ -8,6 +8,7 @@ def home():
         file = open("./practice_log.csv", "r")
         data = file.read()
         file.close()
+        print(data)
         return render_template('./home.html', data=data)
     if request.method == "POST":
         date = request.form.get("date")
@@ -24,7 +25,7 @@ def home():
         file = open("./practice_log.csv", "r")
         data = file.read()
         file.close()
-        return redirect(url_for(''))
+        return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)
