@@ -15,7 +15,13 @@ function showTable(data) {
 
         headers.forEach(header => {
             const td = document.createElement("td");
-            td.textContent = row[header];
+            if (row[header] === "None") {
+                td.textContent = "";
+            } else if (header === "Scales" || header === "Exercises/Studies" || header === "Pieces") {
+                td.textContent = "✔";
+            } else{
+                td.textContent = row[header];
+            }
             tableRow.appendChild(td)
         });
 
