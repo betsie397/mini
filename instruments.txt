@@ -1,2 +1,5 @@
 Trumpet
 Piano
+Banjo
+
+Harp

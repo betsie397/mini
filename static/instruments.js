@@ -1,12 +1,14 @@
-const fs = require('fs');
-function addInstruments(){
+async function addInstruments(){
     const newInstrument = prompt("Please enter the name of the instrument you would like to add:")
     if (newInstrument) {
-        document.getElementById("instrument").innerHTML += `<option value="${newInstrument}">${newInstrument}</option>`;
-        fs.appendFile('instruments.txt', newInstrument + '\n', (err) => {
-            if (err) throw err;
-            console.log('Instrument added to file!');
+        const response = await fetch('/instruments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ instrument: newInstrument })
         });
+        document.getElementById("instrument").innerHTML += `<option value="${newInstrument}">${newInstrument}</option>`;
     }
 }
 

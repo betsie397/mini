@@ -1,8 +1,19 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 import csv
 from datetime import datetime
+import asyncio
 
 app = Flask(__name__)
+
+@app.route('/instruments', methods=['POST'])
+async def add_instrument():
+    data = request.get_json()
+    instrument = data.get('instrument')
+    instrument = instrument.capitalize()
+    if instrument:
+        with open('./instruments.txt', 'a') as file:
+            file.write('\n' + instrument)
+    return jsonify({'status': 'success'})
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -12,7 +23,7 @@ def home():
             reader = csv.DictReader(file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_ALL, skipinitialspace = True)
             data = list(reader)
         with open('./instruments.txt', 'r') as file:
-            options = file.readlines()
+            options = list(line for line in (l.strip() for l in file) if line)
         options = [option.strip('\n') for option in options]
         print(options)
         return render_template('./home.html', data = data, today = today, options = options)
