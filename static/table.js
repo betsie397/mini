@@ -24,7 +24,11 @@ function showTable(data) {
             }
             tableRow.appendChild(td)
         });
-
+        /*td.textContent = document.createElement("button");
+        td.firstChild.setAttribute("type", "button");
+        td.firstChild.setAttribute("onclick", "editEntry()");
+        td.firstChild.textContent = document.createElement("img");
+        td.firstChild.firstChild.setAttribute("src", "../static/edit.png");*/
         table.appendChild(tableRow)
     });
     
