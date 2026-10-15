@@ -11,7 +11,11 @@ def home():
         with open('./practice_log.csv', 'r') as file:
             reader = csv.DictReader(file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_ALL, skipinitialspace = True)
             data = list(reader)
-        return render_template('./home.html', data = data, today = today)
+        with open('./instruments.txt', 'r') as file:
+            options = file.readlines()
+        options = [option.strip('\n') for option in options]
+        print(options)
+        return render_template('./home.html', data = data, today = today, options = options)
     if request.method == "POST":
         date = request.form.get("date")
         duration = request.form.get("duration")

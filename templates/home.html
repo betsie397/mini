@@ -5,6 +5,7 @@
         <link href="../static/styles.css" type="text/css" rel="stylesheet">
         <script src="../static/form.js"></script>
         <script src="../static/table.js"></script>
+        <script src="../static/instruments.js"></script>
     </head>
 
     <body>
@@ -30,11 +31,11 @@
                 <br>
                 <br>
                 <label for="instrument">Instrument:</label>
-                <select id="instrument" name="instrument" required>
+                <select id="instrument" name="instrument" onchange="if(this.value === 'add') addInstruments();" required>
                     <option value="" disabled selected>Select an instrument</option>
-                    <option value="piano">Piano</option>
-                    <option value="trumpet">Trumpet</option>
+                    <option value="add">Add Instrument</option>
                 </select>
+                <script>showInstruments({{ options | tojson }})</script>
                 <br>
                 <br>
                 <label for="scales">Scales</label>
