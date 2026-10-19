@@ -1,6 +1,8 @@
+const editEntry = require("./form.js").editEntry;
+
 function showTable(data) {
     const table = document.getElementById("table");
-    const headers = ["Date", "Duration", "Instrument", "Scales", "Exercises/Studies", "Pieces", "Description", "Date Entered"];
+    const headers = ["Date", "Duration", "Instrument", "Scales", "Exercises/Studies", "Pieces", "Description", "Date Entered", "Edit", "Delete"];
 
     const headerRow = document.createElement("tr");
     headers.forEach(header => {
@@ -19,16 +21,26 @@ function showTable(data) {
                 td.textContent = "";
             } else if (header === "Scales" || header === "Exercises/Studies" || header === "Pieces") {
                 td.textContent = "✔";
+            } else if (header === "Edit") {
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.addEventListener("click", () => {
+                    editEntry();
+                })
+                td.appendChild(editButton);
+            } else if (header === "Delete") {
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", () => {
+                    // Implement delete functionality here
+                })
+                td.appendChild(deleteButton)
             } else{
                 td.textContent = row[header];
             }
             tableRow.appendChild(td)
         });
-        /*td.textContent = document.createElement("button");
-        td.firstChild.setAttribute("type", "button");
-        td.firstChild.setAttribute("onclick", "editEntry()");
-        td.firstChild.textContent = document.createElement("img");
-        td.firstChild.firstChild.setAttribute("src", "../static/edit.png");*/
+
         table.appendChild(tableRow)
     });
     

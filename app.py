@@ -15,7 +15,7 @@ async def add_instrument():
             file.write('\n' + instrument)
     return jsonify({'status': 'success'})
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST', 'DELETE'])
 def home():
     today = datetime.today().strftime('%Y-%m-%d')
     if request.method == 'GET':
@@ -25,8 +25,8 @@ def home():
         with open('./instruments.txt', 'r') as file:
             options = list(line for line in (l.strip() for l in file) if line)
         options = [option.strip('\n') for option in options]
-        print(options)
         return render_template('./home.html', data = data, today = today, options = options)
+    
     if request.method == "POST":
         date = request.form.get("date")
         duration = request.form.get("duration")
@@ -39,6 +39,17 @@ def home():
         file = open("./practice_log.csv", "a")
         file.write("\n" + insert )
         file.close()
+        return redirect(url_for('home'))
+    
+    if request.method == "DELETE":
+        with open('./practice_log.csv', 'r') as file:
+            reader = csv.DictReader(file)
+            data = list(reader)
+        deleteRow = request.get_data(as_text = True)
+        updated = []
+        for row in data:
+            if deleteRow != row:
+                updated = updated.append(row)
         return redirect(url_for('home'))
 
 @app.route('/second', methods=["GET"])
